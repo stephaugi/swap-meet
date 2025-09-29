@@ -2,6 +2,16 @@ import uuid
 class Item:
     def __init__(self, id = None):
         self.id = id if id is not None else uuid.uuid4().int
+
+    def __str__(self):
+        '''
+        Converts item to string using str().
+        returns: "An object of type Item with id <id value>."
+        Operator overloading
+        '''
+        return f"An object of type Item with id {self.id}."
+
+
     
     def get_category(self):
         '''
