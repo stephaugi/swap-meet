@@ -33,5 +33,8 @@ We’d like to improve how we talk about and explain our code to others, includi
 To be respectful of each other’s time and maintain a healthy work–life balance. We’ll give advance notice if we need to adjust our co-working schedule and be mindful of breaks so we can stay focused and productive. We'll try to schedule in time but if something comes up, we'll trust each other to communicate and manage the project.
 
 ## Signatures
-Stephanie Lin Chen _______________
+Stephanie Lin Chen
+Date: 09/29/25
+
+Ekaterina Belova
 Date: 09/29/25
