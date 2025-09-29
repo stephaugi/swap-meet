@@ -26,3 +26,13 @@ class Vendor:
         self.inventory.remove(item)
         return item
     
+    def get_by_id(self, item_id):
+        '''
+        Returns the item with the matching id from inventory
+        parameter: item_id (int)
+        return: item with the matching id or None if not found
+        '''
+        for item in self.inventory:
+            if item.id == item_id:
+                return item
+        return None
