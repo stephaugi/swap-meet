@@ -11,8 +11,6 @@ class Item:
         '''
         return f"An object of type Item with id {self.id}."
 
-
-    
     def get_category(self):
         '''
         Return a string holding the name of the class
