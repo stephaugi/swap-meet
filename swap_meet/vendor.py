@@ -50,20 +50,18 @@ class Vendor:
         returns False
 
         '''
-        vendor1_has_item = self.get_by_id(my_item.id)
-        vendor2_has_item = other_vendor.get_by_id(their_item.id)
-
-        if not vendor1_has_item or not vendor2_has_item:
+        if my_item not in self.inventory or their_item not in other_vendor.inventory:
             return False
         
-        my_item = self.remove(my_item)
+        self.remove(my_item)
         other_vendor.add(my_item)
-        their_item = other_vendor.remove(their_item)
+        other_vendor.remove(their_item)
         self.add(their_item)
 
         return True
 
     def swap_first_item(self, other_vendor):
+
         '''
         Swaps first item in this inventory and friend's inventory.
 
@@ -76,9 +74,9 @@ class Vendor:
         if not self.inventory or not other_vendor.inventory:
             return False
         
-        my_item = self.inventory[0]
-        their_item = other_vendor.inventory[0]
+        my_first_item = self.inventory[0]
+        their_first_item = other_vendor.inventory[0]
 
-        self.swap_items(other_vendor, my_item, their_item)
+        self.swap_items(other_vendor, my_first_item, their_first_item)
 
         return True
