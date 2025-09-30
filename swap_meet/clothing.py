@@ -10,10 +10,10 @@ class Clothing(Item):
     __str__()
     returns "An object of type Clothing with id <id value>. It is made from <fabric value> fabric."
     '''
-    def __init__(self, condition, id=None, fabric="Unknown"):
+    def __init__(self, condition=0, id=None, fabric="Unknown"):
         self.fabric = fabric
         self.condition = condition
-        super().__init__(id)
+        super().__init__(id=id, condition=condition)
 
     def __str__(self):
         first_part = super().__str__()

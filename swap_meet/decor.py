@@ -13,7 +13,7 @@ class Decor(Item):
         self.condition = condition
         self.width = width
         self.length = length
-        super().__init__(id)
+        super().__init__(id=id, condition=condition)
 
     def __str__(self):
         first_part = super().__str__()

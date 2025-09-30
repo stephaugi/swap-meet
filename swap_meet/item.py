@@ -23,9 +23,9 @@ class Item:
         return "Item"
 
     def condition_description(self):
-        if self.condition > 2:
+        if self.condition <= 1:
             return "Yikes. Don't wanna touch that."
-        elif self.condition < 3:
+        elif self.condition >= 3:
             return "Gimme more. Good stuff."
         else:
             return "Not bad. I'll buy it for a dollar."

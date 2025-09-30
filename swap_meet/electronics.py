@@ -9,7 +9,7 @@ class Electronics(Item):
     def __init__(self, condition=0, id=None, type="Unknown"):
         self.condition = condition
         self.type = type
-        super().__init__(id)
+        super().__init__(id=id, condition=condition)
 
     def __str__(self):
         first_part = super().__str__()
