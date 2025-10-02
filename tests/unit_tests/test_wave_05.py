@@ -109,7 +109,7 @@ def test_items_have_condition_as_float():
         assert item.condition == pytest.approx(3.5)
 
 # @pytest.mark.skip
-def test_subclasses_condition_descriptions():
+def test_subclasses_condition_descriptions(): # test for code coverage
     clothing = Clothing(condition=1)
     decor = Decor(condition=2)
     electronics = Electronics(condition=3)

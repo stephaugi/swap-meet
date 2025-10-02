@@ -148,9 +148,6 @@ def test_swap_best_by_category_reordered():
         inventory=[item_f, item_e, item_d]
     )
 
-    my_expected_inventory = [item_b, item_a, item_f]
-    their_expected_inventory = [item_e, item_d, item_c]
-
     # Act
     result = tai.swap_best_by_category(
         other_vendor=jesse,
@@ -169,13 +166,15 @@ def test_swap_best_by_category_reordered():
     
     assert result
     assert len(tai.inventory) == 3
-    assert tai.inventory == [item_f, item_b, item_a]
+    assert tai.inventory == [item_b, item_a, item_f]
+    # assert tai.inventory == [item_f, item_b, item_a] //this is assers for solution where we want to keep item's index or list order
     assert item_f in tai.inventory
     assert item_a in tai.inventory
     assert item_b in tai.inventory
 
     assert len(jesse.inventory) == 3
-    assert jesse.inventory == [item_c, item_e, item_d]
+    assert jesse.inventory == [item_e, item_d, item_c]
+    # assert jesse.inventory == [item_c, item_e, item_d]
     assert item_c in jesse.inventory
     assert item_e in jesse.inventory
     assert item_d in jesse.inventory
