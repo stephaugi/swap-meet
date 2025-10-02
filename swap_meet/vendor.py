@@ -83,13 +83,22 @@ class Vendor:
         return True
     
     def get_by_category(self, category):
-        list_of_objects = []
-        for object in self.inventory:
-            if object.get_category() == category:
-                list_of_objects.append(object)
-        return list_of_objects
+        '''
+        gets objects in inventory by category
+        parameter: category(string)
+        returns: list
+        edge case: if no item matches, return empty list []
+        '''
+
+        return [item for item in self.inventory if item.get_category()== category]
     
     def get_best_by_category(self, category):
+        '''
+        get the item with the best condition in a certain category.
+        parameter: category(string)
+        returns: single item
+        edge case: if no item matches category, return None
+        '''
         list_of_items_matched_category = self.get_by_category(category)
         
         if len(list_of_items_matched_category)==0:
@@ -101,14 +110,35 @@ class Vendor:
                 best_by_category = object
         return best_by_category
     
-    def swap_best_by_category(self, other_vendor, my_priority, their_priority):
+    # This is alternative solution
+    # if not self.inventory:
+    #         return None
         
-        best_item_in_my_inventory = self.get_best_by_category(their_priority)
-        best_item_in_their_inventory = other_vendor.get_best_by_category(my_priority)
+    #     best_item = None
 
-        if not best_item_in_my_inventory or not best_item_in_their_inventory:
+    #     for item in self.inventory:
+    #         if item.get_category() == category:
+
+    #             if not best_item:
+    #                 best_item = item
+
+    #             elif item.condition > best_item.condition:
+    #                 best_item = item
+        
+    #     return best_item
+
+    def swap_best_by_category(self, other_vendor, my_priority, their_priority):
+        '''
+        gets objects in inventory by category
+        parameter: category(string)
+        returns: list
+        edge case: if no item matches, return empty list []
+        '''
+
+        my_best_item = self.get_best_by_category(their_priority)
+        their_best_item = other_vendor.get_best_by_category(my_priority)
+
+        if not my_best_item or not their_best_item:
             return False
-
-        self.swap_items(other_vendor, best_item_in_my_inventory, best_item_in_their_inventory)
-
-        return True
+        
+        return self.swap_items(other_vendor, my_best_item, their_best_item)

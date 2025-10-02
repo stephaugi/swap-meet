@@ -33,6 +33,7 @@ def test_get_no_matching_items_by_category():
 
     items = vendor.get_by_category("Electronics")
 
+    assert not items
     assert len(items) == 0
     # *********************************************************************
     # ****** Complete Assert Portion of this test **********
@@ -147,6 +148,9 @@ def test_swap_best_by_category_reordered():
         inventory=[item_f, item_e, item_d]
     )
 
+    my_expected_inventory = [item_b, item_a, item_f]
+    their_expected_inventory = [item_e, item_d, item_c]
+
     # Act
     result = tai.swap_best_by_category(
         other_vendor=jesse,
@@ -244,6 +248,9 @@ def test_swap_best_by_category_no_match_is_false():
     jesse = Vendor(
         inventory=[item_d, item_e, item_f]
     )
+
+    my_expected_inventory = [item_a, item_b, item_c]
+    their_expected_inventory = [item_d, item_e, item_f]
 
     # Act
     result = tai.swap_best_by_category(
