@@ -90,9 +90,9 @@ class Vendor:
         returns: list
         edge case: if no item matches, return empty list []
         '''
-        category_items = [item for item in self.inventory if item.get_category()== category]
 
-        return category_items
+        return [item for item in self.inventory if item.get_category()== category]
+
 
     def get_best_by_category(self, category):
         '''
