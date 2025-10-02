@@ -109,6 +109,16 @@ def test_items_have_condition_as_float():
         assert item.condition == pytest.approx(3.5)
 
 # @pytest.mark.skip
+def test_subclasses_condition_descriptions():
+    clothing = Clothing(condition=1)
+    decor = Decor(condition=2)
+    electronics = Electronics(condition=3)
+
+    assert clothing.condition_description() == "Yikes. Don't wanna touch that."
+    assert decor.condition_description() == "Not bad. I'll buy it for a dollar."
+    assert electronics.condition_description() == "Gimme more. Good stuff."
+
+# @pytest.mark.skip
 def test_items_have_condition_descriptions_that_are_the_same_regardless_of_type():
     items = [
         Clothing(condition=5),
