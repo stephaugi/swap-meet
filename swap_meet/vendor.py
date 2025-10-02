@@ -1,3 +1,5 @@
+from .item import Item
+
 class Vendor:
     def __init__(self, inventory=None):
         self.inventory = [] if inventory is None else inventory
@@ -80,3 +82,53 @@ class Vendor:
         self.swap_items(other_vendor, my_first_item, their_first_item)
 
         return True
+    
+    def get_by_category(self, category):
+        '''
+        gets objects in inventory by category
+        parameter: category(string)
+        returns: list
+        edge case: if no item matches, return empty list []
+        '''
+        category_items = [item for item in self.inventory if item.get_category()== category]
+
+        return category_items
+
+    def get_best_by_category(self, category):
+        '''
+        get the item with the best condition in a certain category.
+        parameter: category(string)
+        returns: single item
+        edge case: if no item matches category, return None
+        '''
+        if not self.inventory:
+            return None
+        
+        best_item = None
+
+        for item in self.inventory:
+            if item.get_category() == category:
+
+                if not best_item:
+                    best_item = item
+
+                elif item.condition > best_item.condition:
+                    best_item = item
+        
+        return best_item
+
+    def swap_best_by_category(self, other_vendor, my_priority, their_priority):
+        '''
+        Swap items based on desired category and best condition.
+        parameter: other_vendor, my_priority(category wanted), their_priority(category other vendor wants)
+        returns: True
+        edge case: if no matching category item, do not swap. Return False
+        '''
+
+        my_best_item = self.get_best_by_category(their_priority)
+        their_best_item = other_vendor.get_best_by_category(my_priority)
+
+        if not my_best_item or not their_best_item:
+            return False
+        
+        return self.swap_items(other_vendor, my_best_item, their_best_item)
